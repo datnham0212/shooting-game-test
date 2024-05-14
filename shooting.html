@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Sound test</title>
+    <style>
+        body {
+            background-image: url("background/images.jpg");
+            background-repeat: no-repeat;
+            background-size: 1400px 700px;
+        }
+    </style>
+</head>
+
+<body onclick = "playGunShot()">
+
+    <script>
+        function playGunShot(){
+            var gunshot = new Audio('sfx/single-action-revolver.mp3');
+            gunshot.play();
+        }
+        document.addEventListener("click", playGunShot);
+    </script>
+
+</body>
+
+</html>
