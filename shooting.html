@@ -3,25 +3,14 @@
 
 <head>
     <title>Sound test</title>
-    <style>
-        body {
-            background-image: url("background/images.jpg");
-            background-repeat: no-repeat;
-            background-size: 1400px 700px;
-        }
-    </style>
+    <script src = "script/script.js"></script>
+    <link rel =  "stylesheet" href = "css/style.css">
 </head>
 
 <body onclick = "playGunShot()">
-
-    <script>
-        function playGunShot(){
-            var gunshot = new Audio('sfx/single-action-revolver.mp3');
-            gunshot.play();
-        }
-        document.addEventListener("click", playGunShot);
-    </script>
-
+    <div class = "target" id = "first"></div>
+    <div class = "target" id = "second"></div>
+    <div class = "target" id = "third"></div>
 </body>
 
 </html>
