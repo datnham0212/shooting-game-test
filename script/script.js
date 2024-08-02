@@ -6,16 +6,25 @@ $(document).ready(function() {
     }
     $(document).click(playGunShot);
 
-    function bouncing(){
-        var maxWidth = $(window).width() - $('.target').width();
-        var maxHeight = $(window).height() - $('.target').height();
+    function shotCount(){
+        var score = parseInt($('.score').text())
+        $('.score').text(score + 100);
+    }
+
+    function bouncing(single_target){
+        var maxWidth = $('.container').width() - $(single_target).width();
+        var maxHeight = $('.container').height() - $(single_target).height();
 
         var newLeft = maxWidth * Math.random();
         var newTop = maxHeight * Math.random();
 
-        $('.target').animate({left: newLeft, top: newTop}, 1500, function() {bouncing();}
+        $(single_target).animate({left: newLeft, top: newTop}, 1000, function() {bouncing(single_target);}
         );
     }
 
-    bouncing();
+    $('.target').each(function() {
+        bouncing(this);
+        $(this).on('click', shotCount);
+    });
+
 });
