@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
     function playGunShot(){
-        var gunshot = new Audio('sfx/laser.mp3');
+        var gunshot = new Audio('sfx/mouseclick.mp3');
         gunshot.play();
     }
     $(document).click(playGunShot);
@@ -11,20 +11,31 @@ $(document).ready(function() {
         $('.score').text(score + 100);
     }
 
-    function bouncing(single_target){
-        var maxWidth = $('.container').width() - $(single_target).width();
-        var maxHeight = $('.container').height() - $(single_target).height();
+    function spawning(){
 
-        var newLeft = maxWidth * Math.random();
-        var newTop = maxHeight * Math.random();
+        var number_of_targets = $('.target').length;
 
-        $(single_target).animate({left: newLeft, top: newTop}, 1000, function() {bouncing(single_target);}
-        );
+        if (number_of_targets < 5) {
+            var single_target = $('<div class="target"></div>');
+            $('.container').append(single_target);
+
+            var maxWidth = $('.container').width() - $(single_target).width();
+            var maxHeight = $('.container').height() - $(single_target).height();
+
+            var newLeft = (maxWidth - 100) * Math.random();
+            var newTop = (maxHeight -100) * Math.random();
+
+            single_target.css({
+                'left': newLeft + 'px',
+                'top': newTop + 'px',
+                'position': 'absolute'
+            });
+
+            single_target.on('click', function() {
+                shotCount();
+                $(this).remove();
+            });
+        }
     }
-
-    $('.target').each(function() {
-        bouncing(this);
-        $(this).on('click', shotCount);
-    });
-
+    setInterval(spawning, 600);
 });

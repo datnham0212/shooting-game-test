@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Position Div</title>
+    <style>
+        #randomDiv {
+            width: 100px;
+            height: 100px;
+            background-color: blue;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <div id="randomDiv"></div>
+    <button onclick="moveDiv()">Move Div</button>
+
+    <script>
+        function moveDiv() {
+            const div = document.getElementById('randomDiv');
+            const x = Math.random() * (window.innerWidth - 100); // Subtract div width
+            const y = Math.random() * (window.innerHeight - 100); // Subtract div height
+            div.style.left = `${x}px`;
+            div.style.top = `${y}px`;
+        }
+
+        // Move the div on page load
+        window.onload = moveDiv;
+    </script>
+</body>
+</html>
